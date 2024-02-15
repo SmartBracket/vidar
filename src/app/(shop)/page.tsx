@@ -19,7 +19,7 @@ export default async function Home({searchParams} : any) {
   let fetchCatList = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/shop/cats`, {method: 'GET' , cache: 'no-store'})
   let catList = await fetchCatList.json()
   
-  return (<h1>q {process.env.NEXT_PUBLIC_URL}</h1>)
+  return (<h1>q {process.env.NEXT_PUBLIC_URL}</h1>) 
   // console.log(fetchedData[0].currentProducts)
   return (
     <main className="page shop">
