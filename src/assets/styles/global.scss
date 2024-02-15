@@ -1,0 +1,220 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: #0a0a0a;
+    list-style: none;
+}
+a{
+    color: #0a0a0a;
+}
+body::-webkit-scrollbar {
+    width: 8px;               /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+    background: rgb(227, 227, 227);        /* цвет дорожки */
+}
+body::-webkit-scrollbar-thumb {
+    background-color: black;    /* цвет плашки */
+    // border-radius: 20px;       /* закругления плашки */
+    // border: 3px solid orange;  /* padding вокруг плашки */
+}
+body.frozen{
+    overflow: hidden;
+}
+
+.container{
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.header{
+    // height: 75px;
+    // display: flex;
+    // align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    // padding: 8px 0;
+    background: white;
+    box-shadow: 1px 0px 3px black;
+    .header__container{
+        display: flex;
+        align-items: center;
+    }
+    .header__menu{
+        margin-left: 30px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        list-style: none;
+        a{
+            position: relative;
+            font-size: 16px;
+            color: #0a0a0a;
+            text-decoration: none;
+            &::after{
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -3px;
+                height: 1px;
+                background: #0a0a0a;
+                width: 0;
+                transition: .4s;
+            }
+            &:hover{
+                &::after{
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .header__basket{
+        margin-left: auto;
+    }
+}
+
+.footer{
+    background: white;
+    padding: 30px 0;
+    border-top: 1px solid black;
+    .footer__container{
+        display: grid;
+        grid-template-columns: 70px auto auto 1fr;
+        gap: 40px;
+    }
+    .footerPart{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .footerPart__title{
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .footerPart__item{
+            font-size: 14px;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.basket{
+    padding: 8px 0;
+    position: relative;
+
+    .basketWrap{
+        display: flex;
+        align-items: stretch;
+
+    }
+    .basketText{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        pointer-events: none;
+        position: relative;
+        font-weight: 600;
+        z-index: 1;
+        transform: translateX(15px);
+        margin-right: 5px;
+        font-size: 14px;
+        opacity: 0;
+        transition: .4s;
+        &.empty{
+            cursor: default;
+            color: rgb(139, 5, 5);
+            &:hover{
+                color: inherit;
+            }
+        }
+        &:hover{
+            color: #249cd7;
+        }
+    }
+    .basketIcon{
+        position: relative;
+        z-index: 2;
+        width: 45px;
+        height: 45px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        // cursor: pointer;
+    }
+
+    .basketInfoContainer{
+        position: absolute;
+        // height: 200px;
+        width: 350px;
+        // min-width: 200px;
+        // max-width: 400px;
+        right: 0;
+        top: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        background: white;
+        // box-shadow: 0px 5px 5px 1px #6d6d6d45;
+        border: 1px solid #aaaaaa;
+        transform: translateY(30px);
+        opacity: 0;
+        transition: .4s;
+        // transition-delay: 0s, 0s, .4s;
+        // transition-property: opacity, transform, box-shadow;
+    }
+    .basketInfoItem{
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 5px;
+        cursor: default;
+        &:not(:last-of-type){
+            border-bottom: 1px solid #aaaaaa;
+        }
+        .basketInfoItem__imageBlock{
+            margin: 5px;
+            flex-shrink: 0;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            & img{
+                object-fit: contain;
+            }
+        }
+        .basketInfoItem__name{
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-wrap: nowrap;
+            font-size: 15px;
+        }
+        .basketInfoItem__count{
+            flex: 0 0 30px;
+        }
+    }
+
+
+    &.basket_visible{
+        .basketText{
+            pointer-events: all;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .basketInfoContainer{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+.page{
+    padding-top: 35px;
+    .pageTitle{
+        font-size: 28px;
+        margin: 0;
+    }
+}
