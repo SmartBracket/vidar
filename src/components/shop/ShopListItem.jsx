@@ -26,7 +26,7 @@ export default function ShopListItem({productData}){
         </div>
         {
             productData.inStock ? (<ShopAddToBasket productData={productData}/>) :
-            (<div className="notInStock">Нет в наличии</div>)
+            (<div className="notInStock" onClick={(e)=> e.stopPropagation()}>Нет в наличии</div>)
         }
         
     </div>

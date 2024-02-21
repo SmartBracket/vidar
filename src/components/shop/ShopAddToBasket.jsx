@@ -5,8 +5,12 @@ import { useState, useEffect } from "react"
 import store from '@/core/redux/store'
 import reducer from '@/lib/reducers/basket'
 
+import { useAppContext } from '@/components/AppContext'
+
 export default function ShopAddToBasket({productData}){
   const [totalNumber,setTotalNumber] = useState(1)
+
+  const AppContext = useAppContext()
 
   return (
     <div className="shopAddToBasket" onClick={(e)=>{
@@ -22,8 +26,15 @@ export default function ShopAddToBasket({productData}){
         }}>+</div>
       </div>
       <div className="shopAddToBasket__button" onClick={()=>{
-        store.dispatch(reducer.actions.productAdded(productData))
-        // console.log(store.getState())
+        AppContext.addNotifications([...AppContext.notifications, `${productData.name} (${totalNumber}шт.) добавлено в корзину`])
+
+        let dataToBasket = structuredClone(productData)
+        dataToBasket.count = totalNumber
+        if(store.getState().products.find(product => product._id == dataToBasket._id)){
+          store.dispatch(reducer.actions.productAddCount(dataToBasket))
+        }else{
+          store.dispatch(reducer.actions.productAdded(dataToBasket))
+        }
       }}>Добавить в корзину</div>
     </div>
   )

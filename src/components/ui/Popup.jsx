@@ -4,8 +4,8 @@ import { useAppContext } from "@/components/AppContext"
 
 export default function Popup({children}){
     const router = useRouter()
-    const popupIsVisible = useAppContext().popupIsvisible
     const AppContext = useAppContext()
+    const popupIsVisible = AppContext.popupIsvisible
 
     return (
         <div 

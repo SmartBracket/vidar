@@ -34,12 +34,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
+        <AppContextWrapper>
           <Header />
-            <AppContextWrapper>
             {children}
             <Popup>{productModal}</Popup>
-            </AppContextWrapper>
           <Footer />
+        </AppContextWrapper>
       </body>
     </html>
   );

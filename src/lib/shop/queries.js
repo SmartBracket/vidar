@@ -52,6 +52,5 @@ export async function getShopCats(){
       },
       {$sort: {'_id': 1}}
     ]).toArray();
-    console.log(result)
     return result
 }
