@@ -11,7 +11,7 @@ export default function ShopListItem({productData}){
     return (
     <div className="shopItem" onClick={()=>{
         AppContext.setPopupIsVisible(true)
-        router.push(`/${productData.slug}`, {scroll:false})
+        router.push(`/products/${productData.slug}`, {scroll:false})
     }}>
         <div className="shopItem__image-block">
             <Image src={productData.image} alt={productData.name} className='shopItem__image'

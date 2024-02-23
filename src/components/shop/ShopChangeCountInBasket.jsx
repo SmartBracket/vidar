@@ -16,20 +16,20 @@ export default function ShopChangeCountInBasket({productData}){
             store.dispatch(reducer.actions.productRemoveCount(dataToBasket))
           }
         }}>-</div>
-      <input type="number" className="shopChangeBasketCount__number" value={productData.count} min="1" 
+      <input type="number" className="shopChangeBasketCount__number" value={productData.count} min="1" max="9999"
       onClick={(e)=>{
         e.stopPropagation()
       }}
       onChange={(e)=>{
           e.stopPropagation()
           let dataToBasket = structuredClone(productData)
-          dataToBasket.count = e.target.value
+          dataToBasket.count = Number(e.target.value)
           store.dispatch(reducer.actions.productChangeCount(dataToBasket))
         }}/>
       <div className="shopChangeBasketCount__add" onClick={(e)=>{
           e.stopPropagation()
           let dataToBasket = structuredClone(productData)
-          dataToBasket.count = 1
+          dataToBasket.count = Number(1)
           store.dispatch(reducer.actions.productAddCount(dataToBasket))
         }}>+</div>
     </div>

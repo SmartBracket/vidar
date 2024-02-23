@@ -12,7 +12,7 @@ export default function Header(){
                     <Image src='logo.svg' alt="Аптека Vidar" width={45} height={45} className="header__logo" />
                 </Link>
                 <nav className="header__menu">
-                    <a href="/">Витрина</a>
+                    <Link href="/">Витрина</Link>
                     <a href="#">Медицинские статьи</a>
                     <a href="#">Контакты</a>
                 </nav>

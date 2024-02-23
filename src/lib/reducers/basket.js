@@ -32,6 +32,9 @@ const productsInBasketSlice = createSlice({
       let currentProduct = state.find((product)=> product._id === action.payload._id)
       if(currentProduct) currentProduct.count = action.payload.count
     },
+    clearBasket(state,action){
+      return []
+    }
     // todoToggled(state, action) {
     //   // Look for the specific nested object to update.
     //   // In this case, `action.payload` is the default field in the action,

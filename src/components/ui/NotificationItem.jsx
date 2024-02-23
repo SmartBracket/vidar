@@ -8,10 +8,10 @@ export default function NotificationItem({data}){
         item.current.classList.add('notifications__item_shown')
         setTimeout(()=>{
             item.current.classList.add('notifications__item_hidden')      
-        }, 2000)
+        }, 5000)
         setTimeout(()=>{
             item.current.remove()
-        }, 2500)
+        }, 5500)
 
     }, [])
 

@@ -26,7 +26,7 @@ export default function ProductModal({ params }: { params: { product_slug: strin
         }}>
             <div className="shopProductPopup__wrap">
                 <div className="shopProductPopup__image-block">
-                    <Image alt={product.name} fill src={product.image} />
+                    <Image alt={product.name} fill sizes="100%" src={product.image} />
                 </div>
                 <div className="shopProductPopup__info">
                     <div className="shopProductPopup__name">{product.name}</div>
