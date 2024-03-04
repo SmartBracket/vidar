@@ -12,7 +12,7 @@ import store from '@/core/redux/store'
 export default function ConfirmPage() {
     // const router = useRouter()
     // if(store.getState().products.length == 0) router.push('/')
-    if(store.getState().products.length == 0) redirect('/')
+    if(!store.getState().products.length) redirect('/')
     // store.subscribe(()=>{
     //     if(store.getState().products.length == 0) redirect('/')
     // })

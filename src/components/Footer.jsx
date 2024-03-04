@@ -6,7 +6,7 @@ export default function Footer(){
         <footer className="footer">
             <div className="footer__container container">
                 <Link href="/" className="footer__logoWrap">
-                    <Image src='logo.svg' alt="Аптека Vidar" width={70} height={70} className="footer__logo" />
+                    <Image src='/logo.svg' alt="Аптека Vidar" width={70} height={70} className="footer__logo" />
                 </Link>
                 <nav className="footerPart">
                     <div className="footerPart__title">Навигация</div>

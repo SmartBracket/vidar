@@ -5,6 +5,7 @@ import '@/assets/styles/shop.scss'
 import ShopFilters from '@/components/shop/ShopFilters'
 import ShopList from '@/components/shop/ShopList'
 import ShopPagination from '@/components/shop/ShopPagination'
+// import ShopVitrina from '@/components/shop/ShopVitrina'
 
 import { getShopProducts, getShopCats } from '@/lib/shop/queries'
 
@@ -16,9 +17,9 @@ export default async function Home({searchParams} : any) {
   const catList = await getShopCats()
 
   return (
+    // <PageTransition>
     <main className="page shop">
       <div className="container">
-        {/* <Test /> */}
         <h1 className="pageTitle">Витрина аптеки</h1>
         <ShopFilters cats={catList}/>
         <ShopList products={productsList}/>
@@ -26,5 +27,6 @@ export default async function Home({searchParams} : any) {
         {/* <ShopVitrina /> */}
       </div>
     </main>
+    // </PageTransition>
   );
 }

@@ -45,6 +45,11 @@ export async function getShopProducts(pageParams){
     return result
 }
 
+export async function getShopProduct(slug){
+  const product = await db.collection('products').find({'slug' : slug}).limit(1).toArray()
+  return JSON.parse(JSON.stringify(product[0]))
+}
+
 export async function getShopCats(){
     const result = await db.collection("products").aggregate([
       { 

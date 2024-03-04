@@ -39,6 +39,7 @@ export default function BasketOrder(){
                 const mail = formFields.mail.value;
                 const tel = formFields.tel.value;
                 const adres = formFields.adres.value;
+                const ship = formFields.ship.value;
 
                 let message = "🗳Новый заказ!🗳%0A"
                 if(name){
@@ -52,6 +53,7 @@ export default function BasketOrder(){
                 prodcutsInBasket.map((product, index) => {
                     message += `${index + 1}. ${product.name} (${product.count}шт.)%0A`
                 })
+                message += `%0AМетод доставки: ${ship}`
                 message += `%0AСумма заказа: ${totalSum}`
 
                 fetch("https://api.telegram.org/bot6929941129:AAFtNiKadNBExP7jC-eu26_NzHCLJyskRHo/sendMessage?chat_id=-1002063583305&text=" + message)
@@ -64,6 +66,12 @@ export default function BasketOrder(){
                 <input type="email" name="mail" placeholder="Email"/>
                 <input type="tel" name="tel" placeholder="Номер телефона *" required/>
                 <input type="text" name="adres" placeholder="Адрес доставки *" required/>
+                <select name="ship" required>
+                    <option value="">Метод доставки</option>
+                    <option value="Выкуп с аптеки">Выкуп с аптеки</option>
+                    <option value="Доставка курьером">Доставка курьером</option>
+                </select>
+
                 
                 <button type="submit" className="basketOrderForm__submit">Подтвердить</button>
             </form>

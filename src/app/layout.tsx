@@ -1,46 +1,48 @@
 import type { Metadata } from "next";
 
+
 import 'normalize.css';
 import '@/assets/styles/global.scss'
+
 
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
-import Popup from "@/components/ui/Popup"
+
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 
-import { useAppContext, AppContextWrapper } from "@/components/AppContext"
+
+import { AppContextWrapper } from "@/components/AppContext"
+
+import PageTransition from '@/components/ui/PageTransition'
 
 export const metadata: Metadata = {
   title: "Аптека Vidar",
   description: "Онлайн аптека.",
 };
 
-
 export default async function RootLayout({
-  children,
-  productModal
+  children
 }: {
   children: React.ReactNode,
   productModal: React.ReactNode
 }) {
-  
-  
-  // const fetchData = await fetch('http://localhost:3000/api/shop',{method: 'GET' , cache: 'no-store'})
-  // const data = await fetchData.json()
-  // console.log(data)
-
   return (
-    <html lang="en">
-      <body className={`${inter.className}`}>
-        <AppContextWrapper>
-          <Header />
-            {children}
-            <Popup>{productModal}</Popup>
-          <Footer />
-        </AppContextWrapper>
-      </body>
-    </html>
+    
+      <html lang="en">
+        <body className={`${inter.className}`}>
+          <div className="app">
+            <AppContextWrapper>
+                <Header />
+                  {/* <PageTransition> */}
+                  {children}
+                  {/* </PageTransition> */}
+                <Footer />
+            </AppContextWrapper>
+          </div>
+        </body>
+      </html>
+ 
   );
 }

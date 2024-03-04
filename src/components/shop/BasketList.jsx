@@ -34,7 +34,7 @@ export default function BasketList(){
     let totalSum = prodcutsInBasket.reduce((sum, product)=>sum += product.price * product.count, 0)
 
     let openProduct = (productSlug) =>{
-        AppContext.setPopupIsVisible(true)
+        // AppContext.setPopupIsVisible(true)
         router.push(`/products/${productSlug}`, {scroll:false})
     }
 

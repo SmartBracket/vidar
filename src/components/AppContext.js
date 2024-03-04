@@ -7,23 +7,22 @@ import Notification from '@/components/ui/Notification'
 const AppContext = createContext();
 
 export function AppContextWrapper({ children }) {
-    const [popupIsvisible, setPopupIsVisible] = useState(false)
     const [notifications, addNotifications] = useState([])
-
-    
-    useEffect(()=>{
-      if(popupIsvisible)  document.body.classList.add('frozen')
-      if(!popupIsvisible)  document.body.classList.remove('frozen')
-    }, [popupIsvisible])
 
     // useEffect(()=>{
     //   console.log(notifications)
     // }, [notifications])
+    useEffect(() => {
+      let lastIndex = notifications.length - 1
+      const timer = setTimeout(() => {
+        addNotifications(arr => arr.filter((_, index) => index !== lastIndex)) // *
+      }, 2000);
+    
+      return () => clearTimeout(timer);
+    }, [notifications]);
 
     return (
       <AppContext.Provider value={{
-        'popupIsvisible':popupIsvisible, 
-        'setPopupIsVisible':setPopupIsVisible, 
         'notifications' : notifications, 
         'addNotifications' : addNotifications}}>
           <Notification notificationsList={notifications} />

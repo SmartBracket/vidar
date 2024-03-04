@@ -9,9 +9,19 @@ import { useAppContext } from '@/components/AppContext'
 
 export default function ShopAddToBasket({productData}){
   const [totalNumber,setTotalNumber] = useState(1)
+  const [windowWidth,setWindowWidth] = useState(0)
 
   const AppContext = useAppContext()
 
+  useEffect(()=>{
+    window.addEventListener('resize', ()=>{
+      setWindowWidth(window.innerWidth)
+    })
+  }, [])
+
+  if(!productData.inStock){
+    return (<div className="shopAddToBasket notInStock">Нет в наличии</div>)
+  }
   return (
     <div className="shopAddToBasket" onClick={(e)=>{
       e.stopPropagation()
@@ -35,7 +45,7 @@ export default function ShopAddToBasket({productData}){
         }else{
           store.dispatch(reducer.actions.productAdded(dataToBasket))
         }
-      }}>Добавить в корзину</div>
+      }}>{windowWidth > 650 ? 'Добавить в корзину' : 'В корзину'}</div>
     </div>
   )
 }

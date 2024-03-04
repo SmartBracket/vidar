@@ -1,16 +1,14 @@
 'use client'
+
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useAppContext } from "@/components/AppContext"
 
 import ShopAddToBasket from "@/components/shop/ShopAddToBasket"
 
 export default function ShopListItem({productData}){
     const router = useRouter()
-    const AppContext = useAppContext()
     return (
     <div className="shopItem" onClick={()=>{
-        AppContext.setPopupIsVisible(true)
         router.push(`/products/${productData.slug}`, {scroll:false})
     }}>
         <div className="shopItem__image-block">
