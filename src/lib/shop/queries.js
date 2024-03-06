@@ -1,8 +1,9 @@
+import { cache } from 'react'
 import { connectToDatabase } from "@/core/mongo/db";
 import shopSettings from '@/lib/shop/shopSettings'
 
 const { db } = await connectToDatabase(); 
-export async function getShopProducts(pageParams){
+export const getShopProducts = cache(async (pageParams) => {
     let dbPage = pageParams.page ? pageParams.page : 1
     let dbFindQuery = {}
     let dbSortQuery = {'_id' : 1}
@@ -43,12 +44,12 @@ export async function getShopProducts(pageParams){
 
     const result = JSON.parse(JSON.stringify(fetchResult[0]))
     return result
-}
+})
 
-export async function getShopProduct(slug){
+export const getShopProduct = cache(async (slug) => {
   const product = await db.collection('products').find({'slug' : slug}).limit(1).toArray()
   return JSON.parse(JSON.stringify(product[0]))
-}
+})
 
 export async function getShopCats(){
     const result = await db.collection("products").aggregate([

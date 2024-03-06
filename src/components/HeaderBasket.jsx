@@ -1,5 +1,5 @@
 'use client'
-import Link from "next/link"
+import LinkWithTransition from "@/components/ui/LinkWithTransition"
 
 import basketImage from '@/assets/imgs/basket.png'
 
@@ -53,10 +53,10 @@ export default function Header(){
         }}>
             {prodcutsInBasket.length > 0 ? 
                 (
-                    <Link className="basketWrap" href="/confirm">
+                    <LinkWithTransition className="basketWrap" href="/confirm">
                         <div className="basketText">{windowWidthState && windowWidthState < 650 ? 'Перейти в корзину' : 'Оформить заказ'}</div>
                         <div className="basketIcon" style={{'backgroundImage': `url(${basketImage.src})`}}></div>
-                    </Link>
+                    </LinkWithTransition>
                 ) : 
                 (
                     <div className="basketWrap empty">

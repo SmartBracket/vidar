@@ -107,6 +107,9 @@
     text-decoration: none;
     cursor: pointer;
     transition: .4s;
+    & *{
+        text-decoration: none;
+    }
 
     @media (min-width: 650px) {
         &:hover{
@@ -456,10 +459,29 @@
         grid-template-columns: 300px 1fr;
         gap: 35px;
     }
+
+    .product__breads{
+        margin-bottom: 3px;
+        .breads__item{
+            color: rgb(82, 82, 82);
+            font-size: 15px;
+            // color: black;
+            &:not(:last-child){
+                &::after{
+                    content: '⚫';
+                    opacity: .7;
+                }
+            }
+        }
+    }
+
     .product__block{
         width: 100%;
         &:first-of-type{
 
+        }
+        &.imageMobile{
+            display: none;
         }
     }
     .product__imageBlock{
@@ -581,32 +603,86 @@
     .shopItem{
         border: 1px solid #DEDEDE;
         .shopItem__image-block{
-            flex: 0 0 150px;
+            flex: 0 0 135px;
+        }
+        .notInStock{
+            height: 37px;
         }
     }
     
 
     .shopAddToBasket{
+        .shopAddToBasket__button{
+            height: 37px;
+        }
         .shopAddToBasket__counter{
             position: static;
-            height: 28px;
+            height: 32px;
             & .shopAddToBasket__countAdd, & .shopAddToBasket__countIncr{
-                background: #3c4043;
+                width: 32px;
+                // background: #3c4043;
+                background: #DEDEDE;
+                color: rgb(79, 79, 79);
+                // #DEDEDE
+                
             }
         }
     }
 
     .product{
         .product__title{
+            margin-bottom: 8px;
             font-size: 24px;
         }
+
+        .product__breads{
+            grid-column: initial;
+            // margin-bottom: 5px;
+            // .breads__item{
+            //     // font-size: 35px;
+            //     &:not(:last-child){
+            //         &::after{
+            //             content: '⚫';
+            //         }
+            //     }
+            // }
+        }
+
         .product__block{
-            .shopAddToBasket__counter{
-                border-top: none;
+            &.imageMobile{
+                // margin-top: 15px;
+                display: inherit;
+            }
+            &.imageDesktop{
+                display: none;
+            }
+            .shopAddToBasket{
+                .shopAddToBasket__button{
+                    height: 45px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .shopAddToBasket__counter{
+                    height: 38px;
+                    border-top: none;
+                    & .shopAddToBasket__countAdd, & .shopAddToBasket__countIncr{
+                        width: 38px;
+                    }
+                }
             }
         }
         .product__infoPanel{
             gap: 15px;
+            padding: 10px;
+            border-color: #DEDEDE;
+            border-left: 1px solid #DEDEDE;
+            border-right: 1px solid #DEDEDE;
+            border-bottom: none;
+
+            padding: 0;
+            border: none;
+            margin-bottom: 10px;
         }
     }
 
@@ -626,8 +702,14 @@
             height: auto;
             grid-template-columns: 20px 90px 1fr;
             gap: 5px;
+            & * {
+                text-decoration: none;
+            }
             .basketListItem__remove{
                 grid-row: 1/3;
+                &:hover{
+                    box-shadow: none;
+                }
             }
             .basketListItem__imageBlock{
                 margin-right: 5px;
@@ -642,9 +724,13 @@
             }
             .shopChangeBasketCount{
                 grid-column: 3/4;
+                height: 40px;
                 .shopChangeBasketCount__number{
                     flex: 1 1 auto;
                     max-width: initial;
+                }
+                .shopChangeBasketCount__add, .shopChangeBasketCount__decr{
+                    width: 40px;
                 }
             }
         }

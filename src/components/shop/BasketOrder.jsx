@@ -17,6 +17,8 @@ export default function BasketOrder(){
     const router = useRouter()
     const AppContext = useAppContext()
     const [prodcutsInBasket, setProductsInBasket] = useState([])
+    const [method,setMethod] = useState(null)
+
     store.subscribe(()=>{
         setProductsInBasket(store.getState().products)
     })
@@ -38,7 +40,7 @@ export default function BasketOrder(){
                 const name = formFields.name.value;
                 const mail = formFields.mail.value;
                 const tel = formFields.tel.value;
-                const adres = formFields.adres.value;
+                const adres = formFields.adres?.value;
                 const ship = formFields.ship.value;
 
                 let message = "🗳Новый заказ!🗳%0A"
@@ -48,8 +50,11 @@ export default function BasketOrder(){
                 if(mail){
                     message += `%0AПочта: ${mail}`
                 }
-                message += `%0AТелефон: ${tel}"%0AАдрес: ${adres}%0A%0A`
-                message += `Состав заказа:%0A`
+                if(adres){
+                    message += `%0AАдрес: ${adres}`
+                }
+                message += `%0AТелефон: ${tel}`
+                message += `%0A%0AСостав заказа:%0A`
                 prodcutsInBasket.map((product, index) => {
                     message += `${index + 1}. ${product.name} (${product.count}шт.)%0A`
                 })
@@ -62,15 +67,19 @@ export default function BasketOrder(){
                 AppContext.addNotifications([...AppContext.notifications, `Заказ успешно сформирован. Оператор свяжется с вами в ближайшее время.`])
                 store.dispatch(reducer.actions.clearBasket())
             }}>
-                <input type="text" name="name" placeholder="Имя"/>
+                <input type="text" name="name" placeholder="Имя *" required/>
                 <input type="email" name="mail" placeholder="Email"/>
                 <input type="tel" name="tel" placeholder="Номер телефона *" required/>
-                <input type="text" name="adres" placeholder="Адрес доставки *" required/>
-                <select name="ship" required>
+                
+                <select name="ship" required onChange={(e)=>{
+                    setMethod(e.currentTarget.value)
+                }}>
                     <option value="">Метод доставки</option>
                     <option value="Выкуп с аптеки">Выкуп с аптеки</option>
                     <option value="Доставка курьером">Доставка курьером</option>
                 </select>
+
+                {method === 'Доставка курьером' ? (<input type="text" name="adres" placeholder="Адрес доставки *" required/>) : null}
 
                 
                 <button type="submit" className="basketOrderForm__submit">Подтвердить</button>

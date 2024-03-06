@@ -14,8 +14,9 @@ import Footer from "@/components/Footer"
 
 
 import { AppContextWrapper } from "@/components/AppContext"
+import PageWrapper from '@/components/ui/PageWrapper'
 
-import PageTransition from '@/components/ui/PageTransition'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: "Аптека Vidar",
@@ -32,15 +33,13 @@ export default async function RootLayout({
     
       <html lang="en">
         <body className={`${inter.className}`}>
-          <div className="app">
-            <AppContextWrapper>
-                <Header />
-                  {/* <PageTransition> */}
-                  {children}
-                  {/* </PageTransition> */}
-                <Footer />
-            </AppContextWrapper>
-          </div>
+          <AppContextWrapper>
+            <Header />
+              <PageWrapper>
+                {children}
+              </PageWrapper>
+            <Footer />
+          </AppContextWrapper>
         </body>
       </html>
  

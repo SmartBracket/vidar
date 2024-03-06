@@ -3,8 +3,8 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import getShopProducts from '@/lib/shop/getShopProducts'
 import shopSettings from '@/lib/shop/shopSettings'
 
-export default function ShopPagination({productsCount,urlParams}){
-    const pagesCount = Math.ceil(productsCount / shopSettings.productsPerPage)
+export default function Pagination({itemsCount,urlParams}){
+    const pagesCount = Math.ceil(itemsCount / 10)
     
     const router = useRouter()
     const searchParams = useSearchParams()

@@ -1,7 +1,9 @@
 'use client'
 import Image from "next/image"
 
-import { useRouter } from "next/navigation"
+// import { useRouter } from "next/navigation"
+import LinkWithTransition from "@/components/ui/LinkWithTransition"
+
 import { useAppContext } from "@/components/AppContext"
 
 import { useEffect, useState } from 'react'
@@ -15,9 +17,6 @@ import { saveState } from '@/core/redux/localStorage'
 
 
 export default function BasketList(){ 
-    const router = useRouter()
-    const AppContext = useAppContext()
-
     const [prodcutsInBasket, setProductsInBasket] = useState([])
     store.subscribe(()=>{
         // console.log(store.getState())
@@ -33,10 +32,6 @@ export default function BasketList(){
 
     let totalSum = prodcutsInBasket.reduce((sum, product)=>sum += product.price * product.count, 0)
 
-    let openProduct = (productSlug) =>{
-        // AppContext.setPopupIsVisible(true)
-        router.push(`/products/${productSlug}`, {scroll:false})
-    }
 
     return (   
         <div className="basketList">
@@ -47,13 +42,13 @@ export default function BasketList(){
                             e.stopPropagation()
                             store.dispatch(reducer.actions.productRemove(product._id))
                         }}></div>
-                        <div className="basketListItem__imageBlock" onClick={()=>{openProduct(product.slug)}}>
+                        <LinkWithTransition className="basketListItem__imageBlock" href={`/products/${product.slug}`}>
                             <Image src={product.image} alt="Alt" fill sizes="100%"></Image>
-                        </div>
-                        <div className="basketListItem__name" onClick={()=>{openProduct(product.slug)}}>
+                        </LinkWithTransition>
+                        <LinkWithTransition className="basketListItem__name" href={`/products/${product.slug}`}>
                             {product.name}
                             <div className="basketListItem__price">{Number(product.price) * product.count}&#8381; ({Number(product.price)}&#8381; за шт.)</div>
-                        </div>
+                        </LinkWithTransition>
                         <ShopChangeCountInBasket productData={product}/>
                     </div>
                 ))}

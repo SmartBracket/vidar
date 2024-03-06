@@ -42,8 +42,10 @@ export default function ShopAddToBasket({productData}){
         dataToBasket.count = totalNumber
         if(store.getState().products.find(product => product._id == dataToBasket._id)){
           store.dispatch(reducer.actions.productAddCount(dataToBasket))
+          setTotalNumber(1)
         }else{
           store.dispatch(reducer.actions.productAdded(dataToBasket))
+          setTotalNumber(1)
         }
       }}>{windowWidth > 650 ? 'Добавить в корзину' : 'В корзину'}</div>
     </div>
