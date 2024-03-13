@@ -5,19 +5,24 @@ import Image from "next/image"
 
 // import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import basketImage from '@/assets/imgs/basket.png'
 import HeaderBasket from "@/components/HeaderBasket"
 
 import {useAppContext} from '@/components/AppContext'
 
+import { signIn, signOut, useSession } from 'next-auth/react'
+
+
 export default function Header(){
     const appContext = useAppContext()
     const [windowWidthState, setWindowWidthState] = useState(null)
     const [navMenuVisible, setNavMenuVisible] = useState(false)
     const path = usePathname()
+    const router = useRouter()
 
+    const { data: session } = useSession()
 
     useEffect(()=>{
         let body = document.getElementsByTagName('body')[0]
@@ -90,6 +95,13 @@ export default function Header(){
                     <div className="header__burgerLine"></div>
                     <div className="header__burgerLine"></div>
                 </div>
+
+                {session && (<div style={{'cursor':'pointer', 'marginLeft': '10px'}} onClick={()=>{
+                    signOut()
+                    // router.refresh()
+                }}>Выход</div>)}
+                {!session && (<LinkWithTransition href="/vidar_login">Вход</LinkWithTransition>)}
+                
             </div>
         </header>
     )

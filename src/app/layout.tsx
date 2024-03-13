@@ -40,6 +40,7 @@ export default async function RootLayout({
               </PageWrapper>
             <Footer />
           </AppContextWrapper>
+          <SpeedInsights />
         </body>
       </html>
  

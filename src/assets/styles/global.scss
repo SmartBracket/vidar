@@ -581,7 +581,30 @@ body{
     }
 }
 
-
+.listItemAdd{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    cursor: pointer;
+    &:hover{
+        .listItemAdd__icon{
+            transform: scale(1.15);
+        }
+    }
+    .listItemAdd__icon{
+        width: 55px;
+        height: 55px;
+        background: url(../imgs/shopItemAdd.png) no-repeat center / contain;
+        transform: scale(1);
+        transition: .4s;
+    }
+    .listItemAdd__title{
+        font-size: 22px;
+        font-weight: 300;
+    }
+}
 
 @media (max-width: 1140px) {
     .container{

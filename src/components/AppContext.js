@@ -10,6 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { Suspense } from 'react';
 
+import { SessionProvider } from 'next-auth/react'
+
 const AppContext = createContext();
 
 export function AppContextWrapper({ children }) {
@@ -42,18 +44,20 @@ export function AppContextWrapper({ children }) {
     }, [pathname])
 
     return (
+      <SessionProvider>
         <AnimatePresence mode='wait'>
-        <AppContext.Provider value={{
-          'notifications' : notifications, 
-          'addNotifications' : addNotifications,
-          'appLoading':appLoading,
-          'setAppLoading':setAppLoading}}>
-            <div id="app">
-                <Notification notificationsList={notifications} />
-                {children}
-            </div>
-        </AppContext.Provider>
+          <AppContext.Provider value={{
+            'notifications' : notifications, 
+            'addNotifications' : addNotifications,
+            'appLoading':appLoading,
+            'setAppLoading':setAppLoading}}>
+              <div id="app">
+                  <Notification notificationsList={notifications} />
+                  {children}
+              </div>
+          </AppContext.Provider>
         </AnimatePresence>
+      </SessionProvider>
     );
 }
 export function useAppContext() {
