@@ -22,6 +22,11 @@ export default function ArticlesList({articles}){
                   <div className="blogList__item__infoBlock">
                     <div className="blogList__item__cat">{article.category}</div>
                     <div className="blogList__item__title">{article.title}</div>
+                    <div className="blogList__item__published">
+                      {
+                        new Date(article.published).toLocaleDateString() 
+                      }
+                    </div>
                   </div>
                 </LinkWithTransition>
             ))}

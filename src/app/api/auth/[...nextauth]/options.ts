@@ -43,12 +43,6 @@ export const options: NextAuthOptions = {
     pages: {
         signIn: "/vidar_login",
     },
-    theme: {
-        colorScheme: "light", // "auto" | "dark" | "light"
-        brandColor: "", // Hex color code
-        logo: "", // Absolute URL to image
-        buttonText: "" // Hex color code
-    }
     // callbacks: {
     //     async signIn({ user, account, profile, email, credentials }) {
     //       const isAllowedToSignIn = true

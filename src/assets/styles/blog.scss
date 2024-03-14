@@ -68,6 +68,21 @@
         margin: 5px 0;
         color: white;
     }
+    .blogList__item__published{
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        // font-weight: 300;
+        font-size: 15px;
+        &::before{
+            content: "";
+            margin-top: -1px;
+            width: 20px;
+            height: 20px;
+            margin-right: 7px;
+            background: url(https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-1024.png) no-repeat center/contain;
+        }
+    }
 }
 .page.article{
     padding-top: 58px;
@@ -244,6 +259,14 @@
         }
         .blogList__item__cat{
             margin-top: 0;
+            border-radius: 5px;
+        }
+        .blogList__item__published{
+            margin-top: 5px;
+            font-size: 13px;
+            &::before{
+                margin-right: 5px;
+            }
         }
     }
 

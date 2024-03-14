@@ -2,6 +2,14 @@ import { cache } from 'react'
 import { connectToDatabase } from "@/core/mongo/db";
 
 const { db } = await connectToDatabase(); 
+
+export async function getAllArticlesData(){
+  const fetchResult = await db.collection("articles").find({}).toArray()
+  const result = JSON.parse(JSON.stringify(fetchResult))
+  // console.log(result)
+  return result
+}
+
 export const getArticlesData = cache(async (pageParams) =>{
     let dbPage = pageParams.page ? pageParams.page : 1
     let dbFindQuery = {}

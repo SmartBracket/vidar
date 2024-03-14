@@ -39,7 +39,7 @@ export default function ArticleTitle({articleData}){
                     {articleData.title}
                 </h1>
                 <div className="article__titleWrap__info">
-                    <div className="article__titleWrap__info__date">05.05.2022</div>
+                    <div className="article__titleWrap__info__date">{new Date(articleData.published).toLocaleDateString()}</div>
                 </div>
             </motion.div>
         </div>

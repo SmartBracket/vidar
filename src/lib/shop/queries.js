@@ -3,8 +3,16 @@ import { connectToDatabase } from "@/core/mongo/db";
 import shopSettings from '@/lib/shop/shopSettings'
 
 const { db } = await connectToDatabase(); 
+
+export async function getAllShopProducts(){
+  const fetchResult = await db.collection("products").find({}).toArray()
+  const result = JSON.parse(JSON.stringify(fetchResult))
+  // console.log(result)
+  return result
+}
+
 export const getShopProducts = cache(async (pageParams) => {
-    let dbPage = pageParams.page ? pageParams.page : 1
+    let dbPage = pageParams?.page ? pageParams.page : 1
     let dbFindQuery = {}
     let dbSortQuery = {'_id' : 1}
 

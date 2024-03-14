@@ -19,7 +19,10 @@ import PageWrapper from '@/components/ui/PageWrapper'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
-  title: "Аптека Vidar",
+  title: {
+    template: '%s | Аптека Vidar',
+    default : "Аптека Vidar",
+  },
   description: "Онлайн аптека.",
 };
 
