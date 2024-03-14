@@ -4,6 +4,16 @@ import ProductPage from '@/components/shop/ProductPage'
 
 // import { Metadata, ResolvingMetadata } from 'next'
 // export const dynamic = 'force-dynamic'
+import { getAllShopProducts } from '@/lib/shop/queries'
+
+export async function generateStaticParams() {
+    const products = await getAllShopProducts()
+
+    return products.map((product) => ({
+        product_slug: product.slug,
+    }))
+}
+
 export async function generateMetadata({ params }) {
     const product = await getShopProduct(params.product_slug)
     return {

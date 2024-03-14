@@ -43,6 +43,7 @@ export default function ShopFilters({cats}){
               router.push(`${currentPath}?${params.toString()}`)
             }}>Показать только в наличии</div>
             <div className={`shopFilters__item select ${searchParams.get('sortBy') && searchParams.get('sortBy') != '' && 'active'}`}>
+              <label htmlFor="shopFiltersSortSelect" className="invisibleLabel">Сортировка товаров</label>
               <select 
               onChange={(e)=>{
                 const selectedVal = e.currentTarget.value
@@ -56,7 +57,7 @@ export default function ShopFilters({cats}){
                   params.set('sortBy', selectedVal)
                 }
                 router.push(`${currentPath}?${params.toString()}`)
-              }}>
+              }} id="shopFiltersSortSelect">
                 <option value="">Сортировать по ...</option>
                 <option value="cheap">Сначала дешёвые</option>
                 <option value="expensive">Сначала дорогие</option>

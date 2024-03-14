@@ -12,6 +12,15 @@ import ArticlesList from '@/components/blog/ArticlesList'
 
 import { getArticlesData } from '@/lib/blog/queries'
 
+export async function generateMetadata() {
+  return {
+      title: 'Медицинские статьи',
+      description: 'Блог о здоровье и научные статьи на тематику медицина.',
+      // openGraph: {
+      //     images: [article.image ],
+      // },
+  }
+}
 
 export default async function Blog({searchParams} : any) {
   // const productsData = await getShopProducts(searchParams)

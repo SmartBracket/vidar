@@ -50,6 +50,16 @@ body{
 }
 
 
+// UI
+.invisibleLabel{
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+}
+
+
+// Styles
+
 #app{
     &.app_loading{
         overflow: hidden;
@@ -258,13 +268,14 @@ body{
     .footerPart{
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 7px;
         .footerPart__title{
             font-size: 17px;
             font-weight: 600;
         }
         .footerPart__item{
-            font-size: 14px;
+            font-size: 16px;
+            // text-decoration: none;
             &:hover{
                 text-decoration: none;
             }
@@ -606,6 +617,7 @@ body{
     }
 }
 
+
 @media (max-width: 1140px) {
     .container{
         margin: 0 20px;
@@ -705,7 +717,7 @@ body{
                 left: -58px;
                 top: 18px;
                 opacity: 0.65;
-                background: url(https://static.vecteezy.com/system/resources/previews/008/518/137/original/payment-system-with-drug-shop-on-background-vector.jpg) no-repeat center/contain;
+                background: url('/headerMobileBg.webp') no-repeat center/contain;
             }
             &.header__menu_visible{
                 pointer-events: all;
@@ -877,5 +889,20 @@ body{
 
     .footer{
         padding: 20px 0;
+        .footer__container{
+            grid-template-columns: auto 1fr;
+            column-gap: 30px;
+        }
+        .footerPart{
+            gap: 9px;
+            .footerPart__title {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+            .footerPart__item{
+                font-size: 16px;
+                padding: 6px 0;
+            }
+        }
     }
 }

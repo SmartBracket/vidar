@@ -6,13 +6,12 @@ import { useRouter } from "next/navigation"
 
 import ShopAddToBasket from "@/components/shop/ShopAddToBasket"
 
-export default function ShopListItem({productData}){
+export default function ShopListItem({index, productData}){
     return (
 
     <div className="shopItem">
         <LinkWithTransition href={`/products/${productData.slug}`} className="shopItem__image-block">
-            <Image src={productData.image} alt={productData.name} className='shopItem__image'
-            fill sizes="100%"/>
+            <Image src={productData.image} alt={productData.name} className='shopItem__image' width={200} height={200} priority={index === 0 ? true : false}/>
         </LinkWithTransition>
         
         <LinkWithTransition href={`/products/${productData.slug}`} className="shopItem__info">

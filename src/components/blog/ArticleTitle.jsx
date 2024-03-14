@@ -5,6 +5,8 @@ import LinkWithTransition from "@/components/ui/LinkWithTransition"
 import { useEffect, useState } from "react"
 import { motion } from 'framer-motion';
 
+import Head from 'next/head'
+
 export default function ArticleTitle({articleData}){
     let [currentScroll, setCurrentScroll] = useState(null)
 
@@ -16,8 +18,15 @@ export default function ArticleTitle({articleData}){
 
         return ()=>{ window.removeEventListener('scroll',  onScroll) }
     })
+
+    const transformDate = (date)=>{
+        return new Date(date).toLocaleDateString()
+    }
     return (
         <div className="article__titleWrap">
+            <Head>
+                <link rel="preload" as="image" href="/blog/articleBg.webp" />
+            </Head>
             <motion.div className="article__titleWrap__bg"
                 animate={currentScroll ? {y: currentScroll / 3.4} : {y: 0}} 
                 transition={{
@@ -39,7 +48,7 @@ export default function ArticleTitle({articleData}){
                     {articleData.title}
                 </h1>
                 <div className="article__titleWrap__info">
-                    <div className="article__titleWrap__info__date">{new Date(articleData.published).toLocaleDateString()}</div>
+                    <div className="article__titleWrap__info__date">{transformDate(articleData.published)}</div>
                 </div>
             </motion.div>
         </div>

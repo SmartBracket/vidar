@@ -1,7 +1,8 @@
 'use client'
 import LinkWithTransition from "@/components/ui/LinkWithTransition"
 
-import basketImage from '@/assets/imgs/basket.png'
+import Image from "next/image";
+// import basketImage from '@/assets/imgs/basket.png'
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react'
@@ -55,7 +56,8 @@ export default function Header(){
                 (
                     <LinkWithTransition className="basketWrap" href="/confirm">
                         <div className="basketText">{windowWidthState && windowWidthState < 650 ? 'Перейти в корзину' : 'Оформить заказ'}</div>
-                        <div className="basketIcon" style={{'backgroundImage': `url(${basketImage.src})`}}></div>
+                        {/* <div className="basketIcon" style={{'backgroundImage': `url(${basketImage.src})`}}></div> */}
+                        <Image src="/basket.png" width={46} height={46} alt="Корзина аптеки" className="basketIcon" />
                     </LinkWithTransition>
                 ) : 
                 (
@@ -65,7 +67,7 @@ export default function Header(){
                         animate={isHidden && windowWidthState && windowWidthState > 650 ? {opacity: 0, x: 15} : {opacity: 1, x: -5}}
                         className="basketText">Корзина пустая</motion.div>
                         
-                        <div className="basketIcon" style={{'backgroundImage': `url(${basketImage.src})`}}></div>
+                        <Image src="/basket.png" width={46} height={46} alt="Корзина аптеки" className="basketIcon" />
                     </div>
                 )
             }

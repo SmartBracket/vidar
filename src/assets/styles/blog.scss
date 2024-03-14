@@ -28,6 +28,9 @@
         overflow: hidden;
         
         img{
+            width: 100%;
+            max-width: 100% ;
+            max-height: 100%;
             transform: scale(1);
             object-fit: cover !important;
             transition: .6s;
@@ -101,7 +104,7 @@
             top: -50px;
             right: 0;
             bottom: -50px;
-            background: url('/blog/articleBg.png') repeat center / contain;
+            background: url('/blog/articleBg.webp') repeat center / contain;
         }
         .article__titleWrap__container{
             max-width: 1120px;

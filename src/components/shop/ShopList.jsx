@@ -8,12 +8,12 @@ export default async function ShopList({products}){
     const session = await getServerSession(options)
 
     return (
-        <ul className="shopList">
+        <div className="shopList">
             {session && (<div className='shopItem listItemAdd'>
                 <div className="listItemAdd__icon"></div>
                 <div className="listItemAdd__title">Добавить товар</div>
             </div>)}
-            {products && products.map((product)=> <ShopListItem key={product._id} productData={product}/>)}
-        </ul>
+            {products && products.map((product, index)=> <ShopListItem index={index} key={product._id} productData={product}/>)}
+        </div>
     )
 }

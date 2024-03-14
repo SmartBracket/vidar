@@ -7,7 +7,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useRouter, usePathname } from "next/navigation";
 
-import basketImage from '@/assets/imgs/basket.png'
+// import basketImage from '@/assets/imgs/basket.png'
 import HeaderBasket from "@/components/HeaderBasket"
 
 import {useAppContext} from '@/components/AppContext'
@@ -51,26 +51,8 @@ export default function Header(){
                 <LinkWithTransition href="/" className="header__logoWrap">
                     <Image src='/logo.svg' alt="Аптека Vidar" width={45} height={45} className="header__logo" />
                 </LinkWithTransition>
-                {/* {windowWidthState < 650 ? (
-                    <motion.nav className={`header__menu ${navMenuVisible ? 'header__menu_visible' : ''}`}
-                    initial={{opacity:0}}
-                    animate={navMenuVisible ? {opacity: 1} : {opacity:0}}
-                    transition={{ type: "linear", stiffness: 100 }}
-                    >
-                        <span className="header__menu__mobileTitle">Аптека видар</span>
-                        <LinkWithTransition href="/">Витрина</LinkWithTransition>
-                        <LinkWithTransition href="/blog">Статьи</LinkWithTransition>
-                        <LinkWithTransition href="/">Контакты</LinkWithTransition>
-                    </motion.nav>
-                ) : (
-                    <nav className={`header__menu `}>
-                        <span className="header__menu__mobileTitle">Аптека видар</span>
-                        <LinkWithTransition href="/">Витрина</LinkWithTransition>
-                        <LinkWithTransition href="/blog">Статьи</LinkWithTransition>
-                        <LinkWithTransition href="/">Контакты</LinkWithTransition>
-                    </nav>
-                )} */}
-                    <nav className={`header__menu ${navMenuVisible && !appContext.appLoading ? 'header__menu_visible' : ''}`}>
+
+                <nav className={`header__menu ${navMenuVisible && !appContext.appLoading ? 'header__menu_visible' : ''}`}>
                         <span className="header__menu__mobileTitle">Аптека видар</span>
                         <LinkWithTransition className={path === '/' ? 'current' : ''} href="/">
                             Витрина 
@@ -84,9 +66,10 @@ export default function Header(){
                             Контакты
                             <span className="currentIcon"></span>
                         </LinkWithTransition>
-                    </nav>
+                </nav>
 
                 <HeaderBasket />
+
                 <div className={`header__burger ${navMenuVisible ? 'header__burger_close' : ''}`}
                 onClick={()=>{
                     setNavMenuVisible(!navMenuVisible)  
@@ -100,8 +83,7 @@ export default function Header(){
                     signOut()
                     // router.refresh()
                 }}>Выход</div>)}
-                {!session && (<LinkWithTransition href="/vidar_login">Вход</LinkWithTransition>)}
-                
+                {!session && (<LinkWithTransition href="/vidar_login">Вход</LinkWithTransition>)}    
             </div>
         </header>
     )

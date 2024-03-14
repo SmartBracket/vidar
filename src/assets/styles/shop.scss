@@ -122,9 +122,14 @@
     .shopItem__image-block{
         position: relative;
         flex: 0 0 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         // margin-bottom: 10px;
     }
     .shopItem__image{
+        max-height: 100%;
+        max-width: 95%;
         will-change: transform;
         transform: scale(.85);
         object-fit: contain;
