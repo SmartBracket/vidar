@@ -2,7 +2,6 @@
 
 import LinkWithTransition from "@/components/ui/LinkWithTransition"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 
 import ShopAddToBasket from "@/components/shop/ShopAddToBasket"
 
@@ -21,7 +20,7 @@ export default function ShopListItem({index, productData}){
             <div className="shopItem__price">Цена: {productData.price} руб</div>
         </LinkWithTransition>
         {
-            productData.inStock ? (<ShopAddToBasket productData={productData}/>) :
+            productData.inStock === true ? (<ShopAddToBasket productData={productData}/>) :
             (<div className="notInStock" onClick={(e)=> e.stopPropagation()}>Нет в наличии</div>)
         }
         

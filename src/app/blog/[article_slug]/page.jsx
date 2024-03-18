@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
     const article = await getArticle(params.article_slug)
     return {
-        title: article.title,
+        title: article.name,
         description: article.description,
         // openGraph: {
         //     images: [article.image ],
@@ -35,7 +35,7 @@ export default async function Page({ params }){
         <main className="page article">            
             <ArticleTitle articleData={article} />
             <div className="articleContent">
-                <div className="container" dangerouslySetInnerHTML={{ __html: article.content }}>
+                <div className="container" dangerouslySetInnerHTML={{ __html: article.about }}>
 
                 </div>
             </div>

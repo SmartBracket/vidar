@@ -2,7 +2,6 @@
 import LinkWithTransition from "@/components/ui/LinkWithTransition"
 
 import Image from "next/image";
-// import basketImage from '@/assets/imgs/basket.png'
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react'
@@ -14,6 +13,7 @@ import BasketList from '@/components/shop/BasketList'
 export default function Header(){
     const [isHidden, setIsHidden] = useState(true)
     const [prodcutsInBasket, setProductsInBasket] = useState([])
+    const [mobileEmtptyShown, setMobileEmtptyShown] = useState(false)
     const [windowWidthState, setWindowWidthState] = useState(null)
 
     store.subscribe(()=>{
@@ -61,10 +61,18 @@ export default function Header(){
                     </LinkWithTransition>
                 ) : 
                 (
-                    <div className="basketWrap empty">
+                    <div className="basketWrap empty" onClick={()=>{
+                        if(windowWidthState && windowWidthState < 650){
+                            setMobileEmtptyShown(!mobileEmtptyShown)
+                        }
+                    }}>
                         <motion.div 
                         initial={{opacity: 0, x: 15}}
-                        animate={isHidden && windowWidthState && windowWidthState > 650 ? {opacity: 0, x: 15} : {opacity: 1, x: -5}}
+                        // animate={isHidden && windowWidthState && windowWidthState > 650 ? {opacity: 0, x: 15} : {opacity: 1, x: -5}}
+                        animate={windowWidthState && windowWidthState > 650 ? 
+                            (isHidden ?  {opacity: 0, x: 15} : {opacity: 1, x: -5}) :
+                            (mobileEmtptyShown ?  {opacity: 1, x: -5} : {opacity: 0, x: 15})
+                        }
                         className="basketText">Корзина пустая</motion.div>
                         
                         <Image src="/basket.png" width={46} height={46} alt="Корзина аптеки" className="basketIcon" />

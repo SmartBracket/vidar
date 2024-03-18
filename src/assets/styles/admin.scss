@@ -1,0 +1,410 @@
+.page.admin{
+    .admin__title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .admin__logout{
+        font-weight: 400;
+        font-size: 18px;
+        padding: 5px 15px;
+        border: 1px solid black;
+        cursor: pointer;
+        transition: .4s;
+        background: white;
+        &:hover{
+            background: black;
+            color: white;
+        }
+    }
+    .admin__typeTab{
+        margin-top: 15px ;
+        display: flex;
+        // border: 1px solid grey;
+        &.admin__typeTab_hidden{
+            opacity: 0;
+            height: 0;
+        }
+    }
+    .admin__typeTab__item{
+        flex: 0 0 50%;
+        padding: 15px 10px;
+        font-size: 21px;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        // background: #d0d0d0;
+        background: transparent;
+        color: rgb(61, 61, 61);
+        // border: 1px solid grey;
+        transition: .8s, border-color .4s;
+        // flex: 0 0 30%;
+        min-width: 25%;
+        text-decoration: none;
+        // will-change: color, background-color;
+        border: 1px solid #d0d0d0;
+        &:not(.admin__typeTab__item_current):hover{
+            border-color: black;
+        }
+        &.admin__typeTab__item_current{
+            // flex: 1 1 auto;
+            // background: #24abef;
+            color: white;
+            background: black;
+            cursor: default;
+            border: 1px solid black;
+            // border: 1px solid transparent;
+        }
+        &:first-of-type{
+            // border-right: 1px solid grey;
+            border-right: none;
+        }
+        &:last-of-type{
+            // border-right: 1px solid grey;
+            border-left: none;
+        }
+    }
+}
+
+.admin__subTitle{
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.adminProductList{
+    display: flex;
+    flex-direction: column;
+    // gap: 15px;
+}
+.adminProduct{
+    padding: 5px 15px;
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    display: grid;
+    grid-template-columns: 60px 1fr 100px 100px 120px 30px 35px;
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+    &.adminProduct_add{
+        text-decoration: none;
+        cursor: pointer;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        font-size: 19px;
+        font-weight: 500;
+        &::before{
+            content: '';
+            width: 40px;
+            height: 40px;
+            background: url(../imgs/shopItemAdd.png) no-repeat center / contain;
+        }
+    }
+    & > .adminProduct__imageBlock{
+        // max-height: 450px;
+        display: inline-block;
+       height: 100px;
+        img{
+            max-height: 100px;
+            position: relative !important;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    & > .adminProduct__name{
+        // text-decoration: none;
+        justify-self: flex-start;
+    }
+    .adminProduct__edit{
+        width:30px;
+        height: 30px;
+        cursor: pointer;
+        background: url(../imgs/adminEdit.png) no-repeat center / contain;
+    }
+    .adminProduct__delete{
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background: url(../imgs/adminDelete.png) no-repeat center / contain;
+    }
+    // &:not(:last-of-type){
+    //     border-bottom: none;
+    // }
+}
+
+.adminArticle{
+    display: grid;
+    grid-template-columns: 300px 2fr 1fr 30px 35px;
+    gap:  25px;
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    align-items: center;
+    padding-right: 15px;
+    .adminArticle__imageBlock{
+        height: 150px;
+        border-right: 1px solid #d0d0d0;
+        & > img{
+            height: 100%;
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+    }
+    .adminArticle__name{
+        font-size: 19px;
+    }
+    .adminArticle__edit{
+        width:30px;
+        height: 30px;
+        cursor: pointer;
+        background: url(../imgs/adminEdit.png) no-repeat center / contain;
+    }
+    .adminArticle__delete{
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background: url(../imgs/adminDelete.png) no-repeat center / contain;
+    }
+}
+
+.adminEditPage{
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-start;
+    &.adminEditPage_disabled *{
+        pointer-events: none;
+    }
+    .adminEditPage__title{
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 23px;
+        font-weight: 600;
+    }
+    .adminEditPage__submit{
+        // flex: 0 0 150px;
+        width: 100%;
+        text-align: center;
+        padding: 15px 60px;
+        background: #24abef;
+        color: white;
+        cursor: pointer;
+
+        position: fixed;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+    }
+
+
+    .adminEdit__infoWrap{
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+        gap: 20px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+        .adminEditImageBlock{
+            position: relative;
+            max-height: 450px;
+            flex: 0 0 40%;
+            // height: 350px;
+            img{
+                max-width: 100%;
+                max-height: 100%;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .adminEdit__info{
+            flex:  1 1 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+
+    .adminEdit__inputWrap{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    label{
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+    input{
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        border: 1px solid #DEDEDE;
+        outline: none;
+        border-radius: 5px;
+        &[type="checkbox"]{
+            align-self: flex-start;
+            margin-bottom: 20px;
+            width: auto;
+            transform: translateX(5px) translateY(3px) scale(1.5);
+        }
+    }
+
+    .adminEditPage__editor{
+        width: 100%;
+        min-height: 350px;
+        & > textarea{
+            display: none;
+        }
+        .tox-tinymce{
+            border-radius: 5px;
+            min-height: 350px;
+            width: 100%;
+            resize: vertical;
+            margin-bottom: 15px;
+            border: 1px solid #DEDEDE;
+        }
+    }
+    // .adminEditImageWrap{
+    //     margin-bottom: 15px;
+    //     width: 100%;
+    //     display: flex;
+    //     align-items: stretch;
+    //     height: 350px;
+    //     gap: 20px;
+    //     .adminEditImageBlock{
+    //         flex: 0 0 50%;
+    //         img{
+    //             width: 100%;
+    //             height: 100%;
+    //             object-fit: cover;
+    //         }
+    //     }
+    //     .adminEditImageBlockEdit{
+    //         flex: 1 1 auto;
+    //         display: flex;
+    //         flex-direction: column;
+    //         div{
+    //             margin-bottom: 10px;
+    //             font-size: 18px;
+    //             font-weight: 500;
+    //         }
+    //     }
+    // }
+}
+
+@media (max-width: 800px){
+    .page.admin{
+        .admin__title{
+            font-size: 24px;
+        }
+        .admin__typeTab__item{
+            padding: 10px 3px;
+        }
+    }
+    .adminProduct{
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        &.adminProduct_add{
+            padding: 10px 0;
+            font-size: 17px;
+            gap: 10px;
+            &::before{
+                width: 35px;
+                height: 35px;
+            }
+        }
+        & > .adminProduct__name{
+            width: 100%;
+            // flex:  1 1 auto;
+            font-size: 19px;
+        }
+        & > .adminProduct__imageBlock{
+            // width: 100%;
+            min-height: 80px;
+            max-height: 140px;
+            display: flex;
+            justify-content: flex-start;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: left;
+            }
+        }
+        .adminProduct__cat{
+            // display: none;
+            width: 100%;
+        }
+        .adminProduct__stoke{
+            // display: none;
+            width: 100%;
+        }
+        .adminProduct__price{
+            // display: none;
+            width: 100%;
+        }
+        .adminProduct__edit{
+            width:45px;
+            height: 45px;
+        }
+        .adminProduct__delete{
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    .adminArticle{
+        padding: 0;
+        padding-bottom: 10px;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        .adminArticle__imageBlock{
+            grid-column: 1/3;
+            width: 100%;
+            height: 150px;
+            border:none;
+        }
+        .adminArticle__name{
+            padding: 5px 8px;
+            grid-column: 1/3;
+        }
+        .adminArticle__cat{
+            grid-column: 1/3;
+            padding: 0 8px;
+            // justify-self: center;
+        }
+
+        .adminArticle__edit{
+            width:45px;
+            height: 45px;
+            // justify-self: center;
+            margin-left: 8px;
+        }
+        .adminArticle__delete{
+            width: 45px;
+            height: 45px;
+            // justify-self: center;
+        }
+    }
+
+    .adminEditPage{
+        .adminEdit__infoWrap{
+            display: flex;
+            flex-direction: column;
+            .adminEditImageBlock{
+                max-height: initial;
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@
     margin: 0;
     color: #0a0a0a;
     list-style: none;
-    user-select: none;
+    // user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
 a{
@@ -49,6 +49,64 @@ body{
     // }
 }
 
+
+
+.shopPagination{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    .shopPagination__item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #8f8f8f;
+        color: #0a0a0a;
+        text-decoration: none;
+        cursor: pointer;
+        transition: .4s;
+
+        &:not(.shopPagination__prev,.shopPagination__next,.current){
+            &:hover{
+                // border: 1px solid #aaaaaa;
+                // background: #8f8f8f;
+                // color: white;
+                box-shadow: 0px 0px 3px 1px #6b6b6b;
+            }
+        }
+
+        &.current{
+            background: #7e75ff;
+            color: white;
+        }
+        &.shopPagination__prev{
+            border: none;
+            transform: scale(-1) translateX(0);
+            background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Next_right_arrow_black_outline.svg/640px-Next_right_arrow_black_outline.svg.png) no-repeat center / contain;
+            &:hover{
+                transform: scale(-1) translateX(5px);
+            }
+        }
+        &.shopPagination__next{
+            border: none;
+            background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Next_right_arrow_black_outline.svg/640px-Next_right_arrow_black_outline.svg.png) no-repeat center / contain;
+            transform: translateX(0);
+            &:hover{
+                transform: translateX(5px);
+            }
+        }
+        &.shopPagination__next,&.shopPagination__prev{
+            opacity: 0;
+            pointer-events: none;
+            &.visible{
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    }
+}
 
 // UI
 .invisibleLabel{
@@ -890,14 +948,21 @@ body{
     .footer{
         padding: 20px 0;
         .footer__container{
-            grid-template-columns: auto 1fr;
-            column-gap: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .footerPart{
             gap: 9px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &:not(:last-of-type){
+                margin-bottom: 10px;
+            }
             .footerPart__title {
-                font-size: 18px;
-                margin-bottom: 5px;
+                font-size: 20px;
+                margin-bottom: 0px;
             }
             .footerPart__item{
                 font-size: 16px;

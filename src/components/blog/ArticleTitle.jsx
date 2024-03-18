@@ -42,10 +42,10 @@ export default function ArticleTitle({articleData}){
                 >
                 <div className="article__titleWrap__breads breads">
                     <LinkWithTransition href="/blog" className="breads__item">Блог</LinkWithTransition>
-                    <div className="breads__item">{articleData.title}</div>
+                    <div className="breads__item">{articleData.name}</div>
                 </div>
                 <h1 className="articleTitle">
-                    {articleData.title}
+                    {articleData.name}
                 </h1>
                 <div className="article__titleWrap__info">
                     <div className="article__titleWrap__info__date">{transformDate(articleData.published)}</div>

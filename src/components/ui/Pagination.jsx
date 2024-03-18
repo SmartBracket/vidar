@@ -1,7 +1,7 @@
 'use client'
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
-import getShopProducts from '@/lib/shop/getShopProducts'
-import shopSettings from '@/lib/shop/shopSettings'
+// import getShopProducts from '@/lib/shop/getShopProducts'
+// import shopSettings from '@/lib/shop/shopSettings'
 
 export default function Pagination({itemsCount,urlParams}){
     const pagesCount = Math.ceil(itemsCount / 10)

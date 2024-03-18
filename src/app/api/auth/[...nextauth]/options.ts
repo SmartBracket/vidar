@@ -40,9 +40,9 @@ export const options: NextAuthOptions = {
         })
         
     ],
-    pages: {
-        signIn: "/vidar_login",
-    },
+    // pages: {
+    //     signIn: "/vidar_admin",
+    // },
     // callbacks: {
     //     async signIn({ user, account, profile, email, credentials }) {
     //       const isAllowedToSignIn = true

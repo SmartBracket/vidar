@@ -9,8 +9,8 @@ export default function PageWrapper({children}){
         <AnimatePresence mode='wait'>
         <div style={{position: 'relative', 'overflow':'hidden'}}>
             <motion.div className="app__page"
-            initial={appIsLoading ? {x:-40,opacity: 0} : false}
-            animate={appIsLoading ? {x:-40,opacity: 0} : {x:0,opacity: 1}}>
+            initial={appIsLoading ? {y:-40,opacity: 0} : false}
+            animate={appIsLoading ? {y:-40,opacity: 0} : {y:0,opacity: 1}}>
                 {children}
             </motion.div>
             <AppLoader appIsLoading={appIsLoading} />

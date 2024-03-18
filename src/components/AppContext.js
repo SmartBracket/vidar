@@ -2,15 +2,13 @@
 import { createContext, useContext, useEffect } from 'react';
 import { useState } from "react"
 
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 import Notification from '@/components/ui/Notification'
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
-import { Suspense } from 'react';
 
-import { SessionProvider } from 'next-auth/react'
 
 const AppContext = createContext();
 
@@ -44,7 +42,6 @@ export function AppContextWrapper({ children }) {
     }, [pathname])
 
     return (
-      <SessionProvider>
         <AnimatePresence mode='wait'>
           <AppContext.Provider value={{
             'notifications' : notifications, 
@@ -57,7 +54,6 @@ export function AppContextWrapper({ children }) {
               </div>
           </AppContext.Provider>
         </AnimatePresence>
-      </SessionProvider>
     );
 }
 export function useAppContext() {

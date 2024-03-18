@@ -1,15 +1,13 @@
 'use client'
 import Image from "next/image"
 
-import { signIn, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import '@/assets/styles/login.scss'
 import { useState } from 'react'
 
 import { useRouter } from 'next/navigation'
 
-// import { useSearchParams } from 'next/navigation'
-
-export default function Page(){
+export default function LoginPage(){
     const [error, setError] = useState('')
     const [formFields,setFormFields] = useState({username: 'vidar_adm', password: '12345'})
     const router = useRouter()
@@ -43,7 +41,7 @@ export default function Page(){
                 onClick={async ()=>{
                         const sign = await signIn('credentials', {redirect: false, ...formFields})
                         if(sign.status === 200){
-                            router.push("/")
+                            // router.push("/")
                             router.refresh()
                         }else{
                             setError('Неправильно введённые данные')

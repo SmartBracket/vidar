@@ -39,7 +39,7 @@ export default function ProductPage({ product }){
                         <ShopAddToBasket productData={product}/>
                     </div>
                     
-                    <div className="product__descr" dangerouslySetInnerHTML={{ __html: product.about }}></div>
+                    <div className="product__descr" dangerouslySetInnerHTML={{ __html: `<div className='product__descrWrap'>${product.about}</div>`}}></div>
                 </div>
             </div>
         </>

@@ -17,7 +17,8 @@ export default async function Footer(){
                     <div className="footerPart__title">Навигация</div>
                     <LinkWithTransition href="/" className="footerPart__item">Главная</LinkWithTransition>
                     <LinkWithTransition href="/blog" className="footerPart__item">Медицинские статьи</LinkWithTransition>
-                    <LinkWithTransition href="#" className="footerPart__item">Наши контакты</LinkWithTransition>
+                    <LinkWithTransition href="/contacts" className="footerPart__item">Наши контакты</LinkWithTransition>
+                    <LinkWithTransition href="/vidar_admin" className="footerPart__item">Для администратора</LinkWithTransition>
                 </nav>
                 <nav className="footerPart">
                     <div className="footerPart__title">Категории товаров</div>
