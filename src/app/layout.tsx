@@ -48,6 +48,7 @@ export default async function RootLayout({
               <Header />
                 <PageWrapper>
                   {children}
+                  <strong>Test Branch</strong>
                 </PageWrapper>
               <Footer />
             </AppContextWrapper>
