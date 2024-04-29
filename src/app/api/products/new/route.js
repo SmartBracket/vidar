@@ -19,10 +19,6 @@ export async function POST (request) {
             data[name] = value
         }
 
-        // IMAGE
-        const filePath = await uploadImage(data.imageFile, 'products')
-        data.image = filePath
-
         db.collection("products").insertOne({
             name: data.name,
             slug: data.slug,

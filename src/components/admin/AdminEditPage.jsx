@@ -23,8 +23,7 @@ export default function AdminProductEditPage({serverData}){
             name : 'Товар 1',
             slug : 'tovar_1',
             category : 'Категория 1',
-            image : '',
-            imageFile: null,
+            image : 'https://res.cloudinary.com/dbrbbtckh/image/upload/v1714404310/products/shopItem1_q2z0rn.jpg',
             price : '500',
             inStock : true,
             about : '<p>Контент</p>',
@@ -35,8 +34,7 @@ export default function AdminProductEditPage({serverData}){
             name : 'Статья 1',
             slug : 'article_1',
             category : 'Категория 1',
-            image : '',
-            imageFile: null,
+            image : 'https://res.cloudinary.com/dbrbbtckh/image/upload/v1714405423/articles/statiya_3_mhsdst.jpg',
             about : '<p>Контент</p>',
             description : 'Мета описание',
             published : new Date(),
@@ -49,7 +47,6 @@ export default function AdminProductEditPage({serverData}){
             slug : serverData.productData.slug,
             category : serverData.productData.category,
             image : serverData.productData.image,
-            imageFile: null,
             price : serverData.productData.price,
             inStock : serverData.productData.inStock ,
             about : serverData.productData.about,
@@ -62,7 +59,6 @@ export default function AdminProductEditPage({serverData}){
             slug : serverData.productData.slug,
             category : serverData.productData.category,
             image : serverData.productData.image,
-            imageFile: null,
             about : serverData.productData.about,
             description : serverData.productData.description,
             published : new Date(serverData.productData.published),
@@ -72,26 +68,16 @@ export default function AdminProductEditPage({serverData}){
 
     const [pageData, setPageData] = useState(pageState)
 
-    const [createObjectURL, setCreateObjectURL] = useState(serverData.type === 'new' ? null : pageData.image);
-    const uploadImageToClient = (event) => {
-        if (event.target.files && event.target.files[0]) {
-          const i = event.target.files[0];
-    
-          setPageData({...pageData, imageFile: i});
-          setCreateObjectURL(URL.createObjectURL(i));
-        }
-    };
-
     const submitFunction = async () => {
         switch(serverData.taxonomy){
             case 'product':
-                if((!pageData.imageFile && serverData.type === 'new') || !pageData.name || !pageData.slug || !pageData.category || !pageData.price || !pageData.about || !pageData.description){
+                if(!pageData.image || !pageData.name || !pageData.slug || !pageData.category || !pageData.price || !pageData.about || !pageData.description){
                     alert('Заполните все поля')
                     return
                 }
                 break
             case 'article' :
-                if((!pageData.imageFile && serverData.type === 'new') || !pageData.name || !pageData.slug || !pageData.category || !pageData.about || !pageData.description){
+                if(!pageData.image || !pageData.name || !pageData.slug || !pageData.category || !pageData.about || !pageData.description){
                     alert('Заполните все поля')
                     return
                 }
@@ -154,7 +140,7 @@ export default function AdminProductEditPage({serverData}){
 
             <div className="adminEdit__infoWrap">
                 <div className="adminEditImageBlock">
-                    <img src={createObjectURL} />
+                    <img src={pageData.image ? pageData.image : 'https://res.cloudinary.com/dbrbbtckh/image/upload/v1714405423/articles/statiya_3_mhsdst.jpg'} />
                 </div>
                 
                 <div className="adminEdit__info">
@@ -164,7 +150,7 @@ export default function AdminProductEditPage({serverData}){
                     <div className="adminEdit__inputWrap">
                         <label htmlFor="adminEditTitle">Название</label>
                         <input type="text" name='name' id="adminEditTitle" value={pageData.name} onChange={(e)=>{
-                            setPageData({...pageData, name: e.currentTarget.value, slug: slugify(e.currentTarget.value.toLowerCase())})
+                            setPageData({...pageData, name: e.currentTarget.value, slug: encodeURIComponent(slugify(e.currentTarget.value.toLowerCase()))})
                         }}/>
                     </div>
                     {
@@ -180,15 +166,12 @@ export default function AdminProductEditPage({serverData}){
 
 
                     <div className="adminEditImageBlockEdit">
-                        <div style={{'font-size': '17px','font-weight': '500','margin-bottom': '5px'}}>Загрузить картинку</div>
-                        <input type="file" name="myImage" onChange={uploadImageToClient} />
-                        {/* <button
-                        className="btn btn-primary"
-                        type="submit"
-                        onClick={uploadToServer}
-                        >
-                        Send to server
-                        </button> */}
+                        <div style={{'fontSize': '17px','fontWeight': '500','marginBottom': '5px'}}>Ссылка на картинку</div>
+                        <input type="text" name="image" value={pageData.image} onChange={(e)=>{
+                                    setPageData({...pageData, 
+                                        image: e.currentTarget.value.length ? e.currentTarget.value : serverData.taxonomy === 'article' ? 'https://res.cloudinary.com/dbrbbtckh/image/upload/v1714405426/articles/statiya_1_ort4oy.png' : 'https://res.cloudinary.com/dbrbbtckh/image/upload/v1714404310/products/shopItem1_q2z0rn.jpg'
+                                    })
+                                }}/>
                     </div>
 
                     <div className="adminEdit__inputWrap">

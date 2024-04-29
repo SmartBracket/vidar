@@ -19,13 +19,6 @@ export async function POST (request) {
         for(let [name, value] of formData) {
             if(value && value != 'null') data[name] = value
         }
-       
-        // console.log(data)
-        // IMAGE
-        if(data.hasOwnProperty('imageFile')){
-            const filePath = await uploadImage(data.imageFile, 'products')
-            data.image = filePath
-        }
 
         // console.log(data)
         db.collection("products").updateOne(
