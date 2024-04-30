@@ -11,7 +11,10 @@ export default function ArticlesList({articles}){
                 <LinkWithTransition href={`/blog/${article.slug}`} className="blogList__item" key={article._id}>
                   <div className="blogList__item__imageBlock">
                     <Image src={article.image}
-                      alt={article.title} width={540} height={250} priority={index === 0 ? true : false}/>
+                      alt={article.name} 
+                      width={540} height={250} 
+                      priority={index === 0 ? true : false}
+                      sizes="(max-width: 768px) 40vw, 50vw"/>
                   </div>
                   <div className="blogList__item__infoBlock">
                     <div className="blogList__item__cat">{article.category}</div>
