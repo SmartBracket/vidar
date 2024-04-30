@@ -36,7 +36,7 @@
             align-items: center;
             gap: 10px;
             &.active{
-                // background: #0C596E;
+                // background: #24abef;
                 background: #7e75ff;
                 color: white;
                 border-color: transparent;
@@ -179,7 +179,7 @@
 
     .notInStock{
         cursor: default;
-        background: #9E0000;
+        background: #ff7474;
         // margin-top: 10px;
         color: white;
         padding: 8px 0;
@@ -194,7 +194,7 @@
     position: relative;
     &.notInStock{
         cursor: default;
-        background: #9E0000;
+        background: #ff7474;
         color: white;
         padding: 8px 0;
         font-weight: 500;
@@ -238,7 +238,7 @@
         }
         .shopAddToBasket__countAdd,.shopAddToBasket__countIncr{
             position: absolute;
-            background: #0C596E;
+            background: #24abef;
             color: white;
             width: 30px;
             height: 100%;
@@ -250,7 +250,7 @@
             cursor: pointer;
             @media (min-width: 650px) {
                 &:hover{
-                    background: #063643;
+                    background: #1893d1;
                 }
             }
         }
@@ -265,7 +265,7 @@
         position: relative;
         z-index: 3;
         // margin-top: 10px;
-        background: #0C596E;
+        background: #24abef;
         color: white;
         padding: 8px 0;
         font-weight: 500;
@@ -274,7 +274,7 @@
         user-select: none;
         transition: .4s;
         &:hover{
-            background: #063643;
+            background: #1893d1;
         }
     }
 }
@@ -385,7 +385,7 @@
             }
             .basketOrderForm__submit{
                 color: white;
-                background: #0C596E;
+                background: #24abef;
                 padding: 15px 40px;
                 border-radius: 5px;
                 cursor: pointer;
@@ -393,11 +393,11 @@
                 border: none;
                 transition: .4s;
                 &:hover{
-                    box-shadow: 0px 0px 10px #0C596E;
+                    box-shadow: 0px 0px 10px #24abef;
                 }
             }
         }
-        // #0C596E
+        // #24abef
     }
 }
 
